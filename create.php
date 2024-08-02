@@ -43,34 +43,56 @@ $mysqli->close();
 
 ?>
 
+
+
 <!DOCTYPE html>
-<html lang="fr">
-<?php include './includes/head.php'; ?>
-<script>
-        function validateFileSize(input) {
-            const file = input.files[0];
-            if (file && file.size > 2 * 1024 * 1024) { // 5 Mo en octets
-                alert("Le fichier est trop volumineux. La taille maximale autorisée est de 5 Mo.");
-                input.value = ""; // Effacer le champ de fichier
-            }
-        }
-    </script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
 <body>
-    <div class="container mt-5">
-        <h1>Ajouter un Cours</h1>
-        <form action="create.php" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="title">Titre :</label>
+    <header>
+        <div class="head">
+            <div class="Logo">ALFALogo</div>
+            <div class="nav">
+                <ul>
+                    <li>Acceuil</li>
+                    <li>Services</li>
+                    <li>Voir tous les cours</li>
+                    <li>A propos</li>
+                </ul>
+            </div>
+            <div class="search">
+                <div class="input">
+                    <input type="text" placeholder="Rechercher des cours...">
+                </div>
+                <div>
+                    <img src="./assets/img/rechercher.png" width=33px" alt="" srcset="">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="Add">
+    <div class="centerForm">
+        <h1>Bonjour cher utilisateur !</h1>
+        <h3>Ajoutez votre cours : </h3>
+        <form  action="create.php" method="post" enctype="multipart/form-data">
+            <div class="form">
+                <label for="">Titre: </label>
                 <input type="text" class="form-control" name="title" id="title" required>
             </div>
 
-            <div class="form-group">
-                <label for="class">Semestre :</label>
+            <div class="form">
+                <label for="">Semestre: </label>
                 <input type="text" class="form-control" name="class" id="class" required>
             </div>
 
-            <div class="form-group">
-                <label for="level">Niveau :</label>
+            <div class="form">
+                <label for="">Niveau: </label>
                 <select class="form-control" name="level" id="level" required>
                     <?php foreach ($levels as $level): ?>
                         <option value="<?= $level['id'] ?>"><?= $level['level_name'] ?></option>
@@ -78,18 +100,23 @@ $mysqli->close();
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="video_url">URL de la Vidéo :</label>
-                <input type="url" class="form-control" name="video_url" id="video_url" required>
-            </div>
-
-            <div class="form-group">
-                <label for="video_file">Fichier Vidéo :</label>
+            <div class="form1">
+                <label for="">Add file : </label>
                 <input type="file" class="form-control-file" name="video_file" id="video_file" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Ajouter</button>
+            <div class="form">
+                <label for="">URL de la vidéo : </label>
+                <input type="url" class="form-control" name="video_url" id="video_url" required>
+            </div>
+            <div class="btnAddForm">
+                <div class="btnLeftAddForm">
+                    <button type="submit" class="AddLessons">Ajouter</button>
+                </div>
+            </div>
         </form>
     </div>
+    </section>
+    
 </body>
 </html>
